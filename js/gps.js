@@ -1,7 +1,7 @@
 'use strict'
 
 const serialPort = require('serialport');
-const GPS = require('gps');
+const GPS = require('js/gps');
 const port = '/dev/ttyACM1';
 const gps = new GPS;
 
@@ -21,7 +21,7 @@ serialGPS.on('data', function (data) {
         const string = '' + data;
         gps.updatePartial(string);
     } catch (Exception) {
-        console.log('실외에서 다시 시도하세요');
+        console.log('no gps');
     }
 });
 
@@ -30,7 +30,5 @@ gps.on('data', function (data) {
         console.log('lat : ', gps.state.lat.toString().substring(0, 7));
         console.log('lon : ', gps.state.lon.toString().substring(0, 9));
         console.log('speed : ', gps.state.speed.toString().substring(0, 3));
-    } else {
-        console.log('gps 신호가 잡히지 않습니다.');
     }
 });

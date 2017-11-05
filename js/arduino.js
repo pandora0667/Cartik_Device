@@ -40,4 +40,4 @@ serialArduino.on('data', function (data) {
             }
         }
     }
-})
+});
