@@ -148,3 +148,5 @@ $RECYCLE.BIN/
 *.lnk
 
 /package.json
+!/package.json
+/package-lock.json
