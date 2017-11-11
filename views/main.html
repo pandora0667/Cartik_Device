@@ -712,6 +712,9 @@ header {
     </style>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="http://127.0.0.1:3000/socket.io/socket.io.js"></script>
+
+
 </head>
 <body>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
@@ -857,7 +860,7 @@ header {
                 </div>
             </div>
                  <script type="text/javascript">
-                let socket = io.connect('localhost:3000');
+                let socket = io.connect('http://127.0.0.1:3000');
                 socket.on('connected', function (data) {
                     console.log('Connected, I received : ', data);
                 });
