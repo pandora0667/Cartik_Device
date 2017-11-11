@@ -4,7 +4,7 @@ const net = require('net');
 const domain = require('domain');
 const errorHandler = domain.create();  // deprecate 되어 있으나 마땅한 대안이 존재하지 않음
 
-const address = '127.0.0.1';
+const address = '192.168.1.33';
 const port = 5001;
 let server = null;
 // state 정보를 가지고 확인했다가 타이머를 두고 재시도

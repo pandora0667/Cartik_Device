@@ -4,8 +4,8 @@ const serialPort = require('serialport');
 const GPS = require('gps');
 const gps = new GPS;
 
-const port1 = '/dev/ttyACM0';
-const port2 = '/dev/ttyACM1';
+const port1 = '/dev/ttyACM1';
+const port2 = '/dev/ttyACM0';
 
 let lat = 36.350840;
 let lon = 127.300603;
@@ -36,6 +36,7 @@ exports.getGPS = () => {
         lat = gps.state.lat.toString().substring(0, 7);
         lon = gps.state.lon.toString().substring(0, 9);
         speed = gps.state.speed.toString().substring(0, 3);
+		console.log('lat : ', lat, ' lon : ', lon, ' speed : ', speed);
     });
 };
 
