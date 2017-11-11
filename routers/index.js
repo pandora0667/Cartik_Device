@@ -2,7 +2,7 @@
 
 const bodyParser = require('body-parser');
 
-exports.web = (express, app) => {
+exports.web = (express, app, tcp, serialCode) => {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: false}));
 
@@ -10,18 +10,32 @@ exports.web = (express, app) => {
         res.redirect('/static/login.html')
     });
 
-    app.post('/login', function (req, res) {
-        let number = req.body.number;
-        console.log(number);
-        res.redirect('/main');
-    });
+   app.post('/login', async (req, res) => {
+      let login = {serial: serialCode, code: 'login', number: req.body.number};
+      if (await tcp.sendData(login) === 'true') {
+          res.redirect('/main');
+      }
+      else {
+          console.log('로그인 실패');
+          res.redirect('/');
+      }
+   });
 
-    app.post('/register', function (req, res) {
-        console.log(req.body.username);
-        console.log(req.body.email);
-        console.log(req.body.phone);
-        console.log(req.body.number);
-        res.send('register');
+    app.post('/register', async (req, res) => {
+       let sign = {
+           serial: serialCode,
+           code: 'sign',
+           username: req.body.username,
+           email: req.body.email,
+           tel: req.body.phone,
+           number: req.body.number
+       };
+       if (await tcp.sendData(sign) === 'true') {
+           res.redirect('/');
+       } else {
+           res.redirect('/static/500_error.html')
+       }
+
     });
 
     app.route('/main')

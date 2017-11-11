@@ -7,6 +7,10 @@ const gps = new GPS;
 const port1 = '/dev/ttyACM0';
 const port2 = '/dev/ttyACM1';
 
+let lat = 36.350840;
+let lon = 127.300603;
+let speed = 10;
+
 exports.getGPS = () => {
     const serialGPS = new serialPort(port1, function (err) {
         if (err) {
@@ -29,19 +33,13 @@ exports.getGPS = () => {
     });
 
     gps.on('data', function (data) {
-        let lat = gps.state.lat.toString().substring(0, 7);
-        let lon = gps.state.lon.toString().substring(0, 9);
-        let speed = gps.state.speed.toString().substring(0, 3);
-
-        if (lat !== undefined && lon !== undefined) {
-            console.log('lat : ', lat);
-            console.log('lon : ', lon);
-            console.log('speed : ', speed);
-        }
+        lat = gps.state.lat.toString().substring(0, 7);
+        lon = gps.state.lon.toString().substring(0, 9);
+        speed = gps.state.speed.toString().substring(0, 3);
     });
 };
 
-exports.getArduino = () => {
+exports.getArduino = (tcp, socket, serialCode) => {
     const serialArduino = new serialPort(port2, function (err) {
         if (err) {
             return console.log('Error : ', err.message);
@@ -70,12 +68,28 @@ exports.getArduino = () => {
 
                 let re = /\0/g;
                 let str = seSensingData.replace(re, "");
-                console.log(str);
                 try {
                     let msg = JSON.parse(str);
-                    //	console.log('mode:', msg.mode, 'impulse: ', msg.impulse);
+                    let sensor = {
+                        serial: serialCode,
+                        code: 'arduino',
+                        mode: msg.mode,
+                        impulse: msg.impulse,
+                        front: msg.front,
+                        rear: msg.rear,
+                        left: msg.left,
+                        right: msg.right,
+                        temp: msg.temperature,
+                        humi: msg.humidity,
+                        lat: lat,
+                        lon: lon,
+                        speed: speed
+                    };
+                    let response = tcp.sendData(JSON.stringify(sensor));
+                    socket.sensor(sensor);
+                    console.log(response); // 별로 의미없음
                 } catch (Exception) {
-                    console.log('Json parsing error');
+                    console.log('JSON parsing error');
                 }
             }
         }
