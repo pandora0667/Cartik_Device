@@ -7,13 +7,13 @@ const app = express();
 const service = require('./routers/index');
 const serial = require('./js/serial');
 const tcp = require('./js/tcp');
-const socket = require('./js/socket');
+// const socket = require('./js/socket');
 const serialCode = '001';
 
 
 tcp.getConnection();
 serial.getGPS();
-serial.getArduino(tcp, socket, serialCode);
+serial.getArduino(tcp, serialCode);
 
 app.use('/static', express.static(__dirname + '/views'));
 

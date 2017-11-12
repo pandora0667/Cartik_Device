@@ -3,6 +3,7 @@
 const serialPort = require('serialport');
 const GPS = require('gps');
 const gps = new GPS;
+const socket = require('../js/socket');
 
 const port1 = '/dev/ttyACM1';
 const port2 = '/dev/ttyACM0';
@@ -85,7 +86,7 @@ exports.getArduino = (tcp, socket, serialCode) => {
                         lon: lon,
                         speed: speed
                     };
-                    let response = tcp.sendData(JSON.stringify(sensor));
+                    tcp.sendData(JSON.stringify(sensor));
                     socket.sensor(sensor);
                     console.log(sensor);
                 } catch (Exception) {
