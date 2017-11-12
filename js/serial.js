@@ -5,8 +5,8 @@ const GPS = require('gps');
 const gps = new GPS;
 const socket = require('../js/socket');
 
-const port1 = '/dev/ttyACM1';
-const port2 = '/dev/ttyACM0';
+const port1 = '/dev/ttyACM0';
+const port2 = '/dev/ttyACM1';
 
 let lat = 36.350840;
 let lon = 127.300603;

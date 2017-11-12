@@ -11,6 +11,7 @@ io.sockets.on('connection', function (socket) {
 });
 
 exports.sensor = (sensor) => {
+	console.log('socket.io send!!!!!!!');
     io.sockets.emit('sensor', sensor);
 };
 
