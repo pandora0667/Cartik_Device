@@ -40,7 +40,7 @@ exports.getGPS = () => {
     });
 };
 
-exports.getArduino = (tcp, socket, serialCode) => {
+exports.getArduino = (tcp, serialCode) => {
     const serialArduino = new serialPort(port2, function (err) {
         if (err) {
             return console.log('Error : ', err.message);
