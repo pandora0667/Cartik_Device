@@ -3,7 +3,7 @@
 const serialPort = require('serialport');
 const GPS = require('gps');
 const gps = new GPS;
-const socket = require('../js/socket');
+const socket = require('./socket');
 
 const port1 = '/dev/ttyACM0';
 const port2 = '/dev/ttyACM1';
