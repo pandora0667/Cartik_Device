@@ -712,8 +712,7 @@ header {
     </style>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-	<script src="/socket.io/socket.io.js"></script>
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
 
 
 </head>
@@ -861,16 +860,12 @@ header {
                 </div>
             </div>
                  <script type="text/javascript">
-                let socket = io.connect('http://localhost:3000');
+                const socket = io('http://localhost); 
                 socket.on('connected', function (data) {
                     console.log('Connected, I received : ', data);
                 });
-                socket.on('sensor', function (data) {
-                    let sensor = JSON.parse(data)
-                    $("#mode").val(sensor.mode);
-                    $("#impulse").val(sensor.impulse);
-                    $("#lat").val(sensor.lat);
-                    $("#lon").val(sensor.lon);
+                socket.on('mode', function (data) {
+                    $("#mode").val(sensor);
                 });
             </script>
 

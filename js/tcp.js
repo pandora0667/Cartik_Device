@@ -56,7 +56,7 @@ function connection() {
 }
 
 function receive() {
-    console.log('Data receive');
+//    console.log('Data receive');
     return new Promise(resolve => {
         server.on('data', function (data) {
             let re = /\0/g;
