@@ -860,12 +860,12 @@ header {
                 </div>
             </div>
                  <script type="text/javascript">
-                const socket = io('http://localhost); 
+                const socket = io('http://localhost:3000');
                 socket.on('connected', function (data) {
                     console.log('Connected, I received : ', data);
                 });
                 socket.on('mode', function (data) {
-                    $("#mode").val(sensor);
+                    $("#mode").val(data);
                 });
             </script>
 
