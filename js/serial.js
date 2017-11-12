@@ -36,7 +36,6 @@ exports.getGPS = () => {
         lat = gps.state.lat.toString().substring(0, 7);
         lon = gps.state.lon.toString().substring(0, 9);
         speed = gps.state.speed.toString().substring(0, 3);
-		console.log('lat : ', lat, ' lon : ', lon, ' speed : ', speed);
     });
 };
 
@@ -88,7 +87,7 @@ exports.getArduino = (tcp, socket, serialCode) => {
                     };
                     let response = tcp.sendData(JSON.stringify(sensor));
                     socket.sensor(sensor);
-                    console.log(response); // 별로 의미없음
+                    console.log(sensor);
                 } catch (Exception) {
                     console.log('JSON parsing error');
                 }

@@ -19,6 +19,6 @@ app.use('/static', express.static(__dirname + '/views'));
 
 service.web(express, app, tcp, serialCode);
 
-app.listen(8080, function () {
+app.listen(5000, function () {
     console.log('Web server running at port 8080');
 });
