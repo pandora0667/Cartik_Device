@@ -866,6 +866,7 @@ header {
                     console.log('Connected, I received : ', data);
                 });
                 socket.on('mode', function (data) {
+                    console.log(data);
                     $("#mode").val(data);
                 });
             </script>
