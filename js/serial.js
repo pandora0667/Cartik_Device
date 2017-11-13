@@ -86,8 +86,8 @@ exports.getArduino = (tcp, serialCode) => {
                         lon: lon,
                         speed: speed
                     };
-                    // tcp.sendData(JSON.stringify(sensor));
-                    socket.sensor(sensor);
+                    // tcp.sendData(JSON.stringify(send));
+                    socket.send(JSON.stringify(sensor));
                 } catch (Exception) {
                   //  console.log('JSON parsing error');
                 }
