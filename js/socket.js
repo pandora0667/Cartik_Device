@@ -15,7 +15,7 @@ io.sockets.on('connection', function (socket) {
 exports.sensor = (sensor) => {
 	console.log('socket.io send!!!!!!!');
 	let msg = JSON.parse(sensor);
-    io.sockets.emit('mode', msg.mode);
-    console.log(sensor);
+	console.log(msg);
+    io.socket.emit('mode', msg.mode);
 };
 
