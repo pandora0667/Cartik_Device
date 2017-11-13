@@ -1,3 +1,5 @@
+'use strict';
+
 const express = require('express');
 const app = express();
 const http = require('http').createServer(app).listen(3000, function () {
@@ -5,12 +7,12 @@ const http = require('http').createServer(app).listen(3000, function () {
 });
 const io = require('socket.io').listen(http);
 
-exports.sensor = (sensor) => {
-    io.sockets.on('connection', function (socket) {
-        console.log('--- Web socket connection!! ---');
-        socket.emit('connected', 123);
-    });
+io.sockets.on('connection', function (socket) {
+    console.log('--- Web socket connection!! ---');
+    socket.emit('connected', 123);
+});
 
+exports.sensor = (sensor) => {
 	console.log('socket.io send!!!!!!!');
 	let msg = JSON.parse(sensor);
     io.sockets.emit('mode', msg.mode);
