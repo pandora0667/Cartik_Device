@@ -3,7 +3,7 @@
 const serialPort = require('serialport');
 const GPS = require('gps');
 const gps = new GPS;
-const socket = require('./socket');
+// const socket = require('./socket');
 
 const port1 = '/dev/ttyACM0';
 const port2 = '/dev/ttyACM1';
@@ -40,7 +40,7 @@ exports.getGPS = () => {
     });
 };
 
-exports.getArduino = (tcp, serialCode) => {
+exports.getArduino = (tcp, socket, serialCode) => {
     const serialArduino = new serialPort(port2, function (err) {
         if (err) {
             return console.log('Error : ', err.message);
