@@ -20,7 +20,7 @@ exports.send = (sensor) => {
     io.socket.emit('mode', msg.mode);
 };
 
-exports.send = ( sensor) => {
+exports.send = (sensor) => {
     let msg = JSON.parse(sensor);
     console.log('serial : ', msg.temp);
     io.socket.emit('mode', msg.mode);
