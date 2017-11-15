@@ -863,7 +863,7 @@
             <script type="text/javascript">
                 const socket = io.connect(window.location.origin);
                 socket.on('connected', (data) => {
-                    console.log('Connected, I received : ', data);
+                    console.log('Connected');
                 });
                 socket.on('mode', (data) => {
                     console.log(data);
