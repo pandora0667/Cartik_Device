@@ -861,7 +861,7 @@
 
             <!-- start -->
             <script type="text/javascript">
-                const socket = io.connect(window.location.origin);
+                const socket = io.connect('http://localhost:3000');
                 socket.on('connected', (data) => {
                     console.log('Connected, I received : ', data);
                 });

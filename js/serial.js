@@ -40,7 +40,7 @@ exports.getGPS = () => {
     });
 };
 
-exports.getArduino = (app) => {
+exports.getArduino = () => {
     const serialArduino = new serialPort(port2, function (err) {
         if (err) {
             return console.log('Error : ', err.message);
@@ -87,7 +87,7 @@ exports.getArduino = (app) => {
                     };
                     console.log('P : ', sensor.lat);
                     // socket.send(JSON.stringify(sensor));
-                    socket.send(app, sensor);
+                    socket.send(sensor);
                 } catch (Exception) {
                 }
             }

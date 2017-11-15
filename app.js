@@ -8,7 +8,7 @@ const service = require('./routers/index');
 const serial = require('./js/serial');
 
 serial.getGPS();
-serial.getArduino(app);
+serial.getArduino();
 
 app.use('/static', express.static(__dirname + '/views'));
 
