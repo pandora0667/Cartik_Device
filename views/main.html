@@ -768,7 +768,7 @@
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
-    <!--<script src="../socket.io/socket.io.js"></script>-->
+    <!--<script src="/socket.io/socket.io.js"></script>-->
 
 
 </head>
@@ -861,11 +861,11 @@
 
             <!-- start -->
             <script type="text/javascript">
-                const socket = io.connect('http://localhost:3000');
-                socket.on('connected', function (data) {
+                const socket = io.connect(window.location.origin);
+                socket.on('connected', (data) => {
                     console.log('Connected, I received : ', data);
                 });
-                socket.on('mode', function (data) {
+                socket.on('mode', (data) => {
                     console.log(data);
                     $("#mode").val(data);
                 });
