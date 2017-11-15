@@ -861,10 +861,11 @@
 
             <!-- start -->
             <script type="text/javascript">
-                const socket = io.connect(window.location.origin);
+                const socket = io.connect("http://192.168.1.79:3000");
                 socket.on('connected', (data) => {
-                    console.log('Connected');
+                    console.log('Connected, I received : ', data);
                 });
+
                 socket.on('mode', (data) => {
                     console.log(data);
                     $("#mode").val(data);

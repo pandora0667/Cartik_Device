@@ -11,6 +11,7 @@ const io = require('socket.io')(server);
 
 io.sockets.on('connection', (socket) =>  {
     console.log('--- Web socket connection!! ---');
+    socket.emit('connected', 123);
 });
 
 exports.send = (sensor) => {
@@ -18,3 +19,4 @@ exports.send = (sensor) => {
 	console.log('serial : ', msg.temp);
     io.sockets.emit('mode', msg.mode);
 };
+
