@@ -85,6 +85,7 @@ exports.getArduino = (app) => {
                         lon: lon,
                         speed: speed
                     };
+                    console.log('P : ', sensor.lat);
                     // socket.send(JSON.stringify(sensor));
                     socket.send(app, sensor);
                 } catch (Exception) {
