@@ -29,7 +29,7 @@ exports.getGPS = () => {
             const string = '' + data;
             gps.updatePartial(string);
         } catch (Exception) {
-          //  console.log('no gps');
+            //  console.log('no gps');
         }
     });
 
@@ -40,7 +40,7 @@ exports.getGPS = () => {
     });
 };
 
-exports.getArduino = (tcp, serialCode) => {
+exports.getArduino = () => {
     const serialArduino = new serialPort(port2, function (err) {
         if (err) {
             return console.log('Error : ', err.message);
@@ -72,7 +72,6 @@ exports.getArduino = (tcp, serialCode) => {
                 try {
                     let msg = JSON.parse(str);
                     let sensor = {
-                        serial: serialCode,
                         code: 'arduino',
                         mode: msg.mode,
                         impulse: msg.impulse,
@@ -86,10 +85,8 @@ exports.getArduino = (tcp, serialCode) => {
                         lon: lon,
                         speed: speed
                     };
-                    // tcp.sendData(JSON.stringify(send));
                     socket.send(JSON.stringify(sensor));
                 } catch (Exception) {
-                  //  console.log('JSON parsing error');
                 }
             }
         }
