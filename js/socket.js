@@ -18,5 +18,8 @@ exports.send = (sensor) => {
 	let msg = JSON.parse(sensor);
 	console.log('serial : ', msg.temp);
     io.sockets.emit('mode', msg.mode);
+    io.sockets.emit('impulse', msg.impulse);
+    io.sockets.emit('lat', msg.lat);
+    io.sockets.emit('lon', msg.lon);
 };
 
