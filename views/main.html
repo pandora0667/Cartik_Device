@@ -861,7 +861,9 @@
 
             <!-- start -->
             <script type="text/javascript">
-                const socket = io.connect("http://192.168.1.79:3000");
+                const str = window.location.origin.split(":");
+                const address = str[0] + ":" + str[1] + ":3000";
+                const socket = io.connect(address);
                 socket.on('connected', (data) => {
                     console.log('Connected, I received : ', data);
                 });
