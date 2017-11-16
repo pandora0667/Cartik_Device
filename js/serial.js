@@ -72,7 +72,6 @@ exports.getArduino = () => {
                 try {
                     let msg = JSON.parse(str);
                     let sensor = {
-                        code: 'arduino',
                         mode: msg.mode,
                         impulse: msg.impulse,
                         front: msg.front,
@@ -85,8 +84,6 @@ exports.getArduino = () => {
                         lon: lon,
                         speed: speed
                     };
-                    console.log('P : ', sensor.lat);
-                    // socket.send(JSON.stringify(sensor));
                     socket.send(JSON.stringify(sensor));
                 } catch (Exception) {
                 }
