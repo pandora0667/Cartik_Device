@@ -90,8 +90,8 @@ exports.getArduino = () => {
 
                     let sensors = JSON.stringify(sensor);
                     console.log(sensors);
-                    udp.send(sensors);
                     socket.send(sensors);
+                    udp.send(sensors);
                 } catch (Exception) {
                 }
             }
