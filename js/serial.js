@@ -1,6 +1,7 @@
 'use strict';
 
 const serialPort = require('serialport');
+const udp = require('./udp');
 const socket = require('./socket');
 const GPS = require('gps');
 const gps = new GPS;
@@ -72,6 +73,7 @@ exports.getArduino = () => {
                 try {
                     let msg = JSON.parse(str);
                     let sensor = {
+                        code: '001',
                         mode: msg.mode,
                         impulse: msg.impulse,
                         front: msg.front,
@@ -84,6 +86,7 @@ exports.getArduino = () => {
                         lon: lon,
                         speed: speed
                     };
+                    udp.send(JSON.stringify(sensor));
                     socket.send(JSON.stringify(sensor));
                 } catch (Exception) {
                 }
