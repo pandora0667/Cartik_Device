@@ -50,12 +50,12 @@ exports.getArduino = () => {
 
     let seTmpData = '';
 
-    serialArduino.on('open', function () {
+    serialArduino.on('open',  () => {
         console.log('Arduino serial open');
         serialArduino.flush();
     });
 
-    serialArduino.on('data', function (data) {
+    serialArduino.on('data',  (data) => {
         const mbRex = new Buffer(data);
         const string = mbRex.toString('ascii').trim();
 
