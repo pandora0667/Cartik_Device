@@ -86,7 +86,8 @@ exports.getArduino = () => {
                         lon: lon,
                         speed: speed
                     };
-                    udp.send(JSON.stringify(sensor));
+		 //   let sensors = JSON.stringify(sensor); 
+                //    udp.send(sensors);
                     socket.send(JSON.stringify(sensor));
                 } catch (Exception) {
                 }
