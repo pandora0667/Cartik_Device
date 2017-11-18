@@ -70,6 +70,7 @@ exports.getArduino = () => {
 
                 let re = /\0/g;
                 let str = seSensingData.replace(re, "");
+
                 try {
                     let msg = JSON.parse(str);
                     let sensor = {
@@ -86,13 +87,16 @@ exports.getArduino = () => {
                         lon: lon,
                         speed: speed
                     };
-		 //   let sensors = JSON.stringify(sensor); 
-                //    udp.send(sensors);
-                    socket.send(JSON.stringify(sensor));
+
+                    let sensors = JSON.stringify(sensor);
+                    console.log(sensors);
+                    // udp.send(sensors);
+                    // socket.send(JSON.stringify(sensor));
                 } catch (Exception) {
                 }
             }
         }
     });
 };
+
 
