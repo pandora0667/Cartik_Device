@@ -201,10 +201,6 @@
             padding: 0;
         }
 
-        /*.panel-heading{*/
-            /*border: 1px solid;*/
-        /*}*/
-
         .display-table {
             display: table;
             padding: 0;
@@ -783,14 +779,16 @@
 <div class="container-fluid display-table">
     <div class="row display-table-row">
         <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
-            <div class="logo" style="height: 60px; padding-top:25px; font-size: 20px; color:white; font-weight: bold;">
-                WISOFT
+            <div class="logo">
+                <div class="logo" style="height: 60px; padding-top:25px; font-size: 20px; color:white; font-weight: bold;">
+                    WISOFT
+                </div>
             </div>
             <div class="navi">
                 <ul>
-                    <li class="active"><a href="http://jusk2.asuscomm.com:5000/"><i class="fa fa-home" aria-hidden="true"></i><span
+                    <li><a href="http://jusk2.asuscomm.com:5000/"><i class="fa fa-home" aria-hidden="true"></i><span
                             class="hidden-xs hidden-sm">Dashboard</span></a></li>
-                    <li><a href="http://jusk2.asuscomm.com:5000/car"><i class="fa fa-tasks" aria-hidden="true"></i><span
+                    <li class="active"><a href="http://jusk2.asuscomm.com:5000/car"><i class="fa fa-tasks" aria-hidden="true"></i><span
                             class="hidden-xs hidden-sm">Car Status</span></a>
                     </li>
                     <li><a href="http://jusk2.asuscomm.com:5000/gps"><i class="fa fa-bar-chart" aria-hidden="true"></i><span
@@ -864,59 +862,66 @@
                 const str = window.location.origin.split(":");
                 const address = str[0] + ":" + str[1] + ":3000";
                 const socket = io.connect(address);
+                let mode = 0;
+                let impulse = 0;
+                let front = 0;
+                let rear = 0;
+                let right = 0;
+                let left = 0;
+
                 socket.on('connected', (data) => {
                     console.log('Connected, I received : ', data);
                 });
 
                 socket.on('mode', (data) => {
+                    mode = data;
                     $("#mode").val(data);
                 });
-//mode라는 값은 어떻게 가져오죠?...
-                if(mode){
-                `<script type="text/javascript" src="js/audio.js">`
-                }
                 socket.on('impulse', (data) => {
+                    impulse = data;
                     $("#impulse").val(data);
                 });
-                socket.on('lat', (data) => {
-                    $("#lat").val(data);
-                });
-                socket.on('lon', (data) => {
-                    $("#lon").val(data);
-                });
-                socket.on('speed', (data) => {
-                    $("#speed").val(data);
-                });
                 socket.on('front', (data) => {
+                    front = data;
                     $("#front").val(data);
                 });
                 socket.on('rear', (data) => {
+                    rear = data;
                     $("#rear").val(data);
                 });
                 socket.on('right', (data) => {
+                    right = data;
                     $("#right").val(data);
                 });
                 socket.on('left', (data) => {
+                    left = data;
                     $("#left").val(data);
                 });
-                socket.on('temp', (data) => {
-                    $("#temp").val(data);
-                });
-                socket.on('humi', (data) => {
-                    $("#humi").val(data);
-                });
 
+                if(mode){
+                    `<script type="text/javascript" src="js/audio.js">`
+                } else if(impulse > 500) {
+                    `<script type="text/javascript" src="js/impulse.js">`
+                } else if(!front) {
+                    `<script type="text/javascript" src="js/front.js">`
+                } else if(!rear) {
+                    `<script type="text/javascript" src="js/rear.js">`
+                } else if(!right) {
+                    `<script type="text/javascript" src="js/right.js">`
+                } else if(!left) {
+                    `<script type="text/javascript" src="js/left.js">`
+                }
 
             </script>
 
-            <div style="margin-top: 20px"></div>
+            <div style="margin-top: 50px"></div>
             <div class="row">
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-6 col-md-6">
                     <div class="panel panel-green">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <img src="img/atttack.png" height="69.6px" width="70px">
+                                    <img src="img/atttack.png" height="75.6px" width="100px">
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">
@@ -929,12 +934,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-6 col-md-6">
                     <div class="panel panel-green">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <img src="img/impulse.png" height="69.6px" width="70px">
+                                    <img src="img/impulse.png" height="75.6px" width="100px">
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">
@@ -947,45 +952,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-yellow">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="img/long.png" height="69.6px" width="70px">
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='lat' value="."
-                                               style="text-align:right; background-color:transparent;  border:none;">
-                                    </div>
-                                    <div>Latitude</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-red">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="img/long.png" height="69.6px" width="70px">
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='lon' value="."
-                                               style="text-align:right; background-color:transparent;  border:none;">
-                                    </div>
-                                    <div>Longitude</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
-            <div style="margin-top: 20px"></div>
+            <div style="margin-top: 50px"></div>
             <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-green">
@@ -1054,64 +1023,6 @@
                                                style="text-align:right; background-color:transparent;  border:none;">
                                     </div>
                                     <div>Left</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div style="margin-top: 20px"></div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-dashboard fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='speed' value="."
-                                               style="text-align:right; background-color:transparent; border:none;">
-                                    </div>
-                                    <div>Speed</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="img/temp.png" height="69.6px" width="70px">
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='temp' value="."
-                                               style="text-align:right;background-color:transparent; border:none;">
-                                    </div>
-                                    <div>Temperature</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-yellow">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="img/humi.png" height="69.6px" width="70px">
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='humi' value="."
-                                               style="text-align:right; background-color:transparent;  border:none;">
-                                    </div>
-                                    <div>Humidity</div>
                                 </div>
                             </div>
                         </div>

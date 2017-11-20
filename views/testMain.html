@@ -202,7 +202,7 @@
         }
 
         /*.panel-heading{*/
-            /*border: 1px solid;*/
+        /*border: 1px solid;*/
         /*}*/
 
         .display-table {
@@ -869,13 +869,14 @@
                 });
 
                 socket.on('mode', (data) => {
-                    $("#mode").val(data);
+                    if(data) {
+                        document.getElementById('image1').src = '../img/red.png';
+                    } else {
+                        document.getElementById('image1').src = '../img/green.png';
+                    }
                 });
-//mode라는 값은 어떻게 가져오죠?...
-                if(mode){
-                `<script type="text/javascript" src="js/audio.js">`
-                }
                 socket.on('impulse', (data) => {
+                    impulse = data;
                     $("#impulse").val(data);
                 });
                 socket.on('lat', (data) => {
@@ -888,16 +889,32 @@
                     $("#speed").val(data);
                 });
                 socket.on('front', (data) => {
-                    $("#front").val(data);
+                    if(!data) {
+                        document.getElementById('image2').src = '../img/red.png';
+                    } else {
+                        document.getElementById('image2').src = '../img/green.png';
+                    }
                 });
                 socket.on('rear', (data) => {
-                    $("#rear").val(data);
+                    if(!data) {
+                        document.getElementById('image3').src = '../img/red.png';
+                    } else {
+                        document.getElementById('image3').src = '../img/green.png';
+                    }
                 });
                 socket.on('right', (data) => {
-                    $("#right").val(data);
+                    if(!data) {
+                        document.getElementById('image4').src = '../img/red.png';
+                    } else {
+                        document.getElementById('image4').src = '../img/green.png';
+                    }
                 });
                 socket.on('left', (data) => {
-                    $("#left").val(data);
+                    if(!data) {
+                        document.getElementById('image5').src = '../img/red.png';
+                    } else {
+                        document.getElementById('image5').src = '../img/green.png';
+                    }
                 });
                 socket.on('temp', (data) => {
                     $("#temp").val(data);
@@ -905,8 +922,6 @@
                 socket.on('humi', (data) => {
                     $("#humi").val(data);
                 });
-
-
             </script>
 
             <div style="margin-top: 20px"></div>
@@ -920,8 +935,7 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='mode' value="."
-                                               style="text-align:right; background-color:transparent; border:none;">
+                                        <img src="" id="image1">
                                     </div>
                                     <div>Attack</div>
                                 </div>
@@ -996,8 +1010,7 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='front' value="."
-                                               style="text-align:right; background-color:transparent; border:none;">
+                                        <img src="" id="image2">
                                     </div>
                                     <div>Front</div>
                                 </div>
@@ -1014,8 +1027,7 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='rear' value="."
-                                               style="text-align:right;background-color:transparent; border:none;">
+                                        <img src="" id="image3">
                                     </div>
                                     <div>Rear</div>
                                 </div>
@@ -1032,8 +1044,7 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='right' value="."
-                                               style="text-align:right; background-color:transparent;  border:none;">
+                                        <img src="" id="image4">
                                     </div>
                                     <div>Right</div>
                                 </div>
@@ -1050,8 +1061,7 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='left' value="."
-                                               style="text-align:right; background-color:transparent;  border:none;">
+                                        <img src="" id="image5">
                                     </div>
                                     <div>Left</div>
                                 </div>

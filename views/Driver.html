@@ -202,7 +202,7 @@
         }
 
         /*.panel-heading{*/
-            /*border: 1px solid;*/
+        /*border: 1px solid;*/
         /*}*/
 
         .display-table {
@@ -788,7 +788,7 @@
             </div>
             <div class="navi">
                 <ul>
-                    <li class="active"><a href="http://jusk2.asuscomm.com:5000/"><i class="fa fa-home" aria-hidden="true"></i><span
+                    <li><a href="http://jusk2.asuscomm.com:5000/"><i class="fa fa-home" aria-hidden="true"></i><span
                             class="hidden-xs hidden-sm">Dashboard</span></a></li>
                     <li><a href="http://jusk2.asuscomm.com:5000/car"><i class="fa fa-tasks" aria-hidden="true"></i><span
                             class="hidden-xs hidden-sm">Car Status</span></a>
@@ -798,7 +798,7 @@
                     </li>
                     <li><a href="http://jusk2.asuscomm.com:5000/status"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Internal Status</span></a>
                     </li>
-                    <li><a href="http://jusk2.asuscomm.com:5000/driver"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Driver Info</span></a>
+                    <li class="active"><a href="http://jusk2.asuscomm.com:5000/driver"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Driver Info</span></a>
                     </li>
                 </ul>
             </div>
@@ -858,270 +858,25 @@
                     </div>
                 </header>
             </div>
-
-            <!-- start -->
-            <script type="text/javascript">
-                const str = window.location.origin.split(":");
-                const address = str[0] + ":" + str[1] + ":3000";
-                const socket = io.connect(address);
-                socket.on('connected', (data) => {
-                    console.log('Connected, I received : ', data);
-                });
-
-                socket.on('mode', (data) => {
-                    $("#mode").val(data);
-                });
-//mode라는 값은 어떻게 가져오죠?...
-                if(mode){
-                `<script type="text/javascript" src="js/audio.js">`
-                }
-                socket.on('impulse', (data) => {
-                    $("#impulse").val(data);
-                });
-                socket.on('lat', (data) => {
-                    $("#lat").val(data);
-                });
-                socket.on('lon', (data) => {
-                    $("#lon").val(data);
-                });
-                socket.on('speed', (data) => {
-                    $("#speed").val(data);
-                });
-                socket.on('front', (data) => {
-                    $("#front").val(data);
-                });
-                socket.on('rear', (data) => {
-                    $("#rear").val(data);
-                });
-                socket.on('right', (data) => {
-                    $("#right").val(data);
-                });
-                socket.on('left', (data) => {
-                    $("#left").val(data);
-                });
-                socket.on('temp', (data) => {
-                    $("#temp").val(data);
-                });
-                socket.on('humi', (data) => {
-                    $("#humi").val(data);
-                });
-
-
-            </script>
-
-            <div style="margin-top: 20px"></div>
             <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="img/atttack.png" height="69.6px" width="70px">
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='mode' value="."
-                                               style="text-align:right; background-color:transparent; border:none;">
-                                    </div>
-                                    <div>Attack</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div style="height: 40px"></div>
+                <div class="col-md-3"></div>
+                <div class="col-md-2" style="padding-top:15px; padding-bottom: 15px; border-top: solid 1.5px; border-bottom: solid 1.5px; border-left: solid 1.5px;">
+                    <img src="img/idphoto.jpg" style="width: 230px; height: 280px">
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="img/impulse.png" height="69.6px" width="70px">
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='impulse' value="."
-                                               style="text-align:right;background-color:transparent; border:none;">
-                                    </div>
-                                    <div>Impulse</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-yellow">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="img/long.png" height="69.6px" width="70px">
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='lat' value="."
-                                               style="text-align:right; background-color:transparent;  border:none;">
-                                    </div>
-                                    <div>Latitude</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-red">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="img/long.png" height="69.6px" width="70px">
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='lon' value="."
-                                               style="text-align:right; background-color:transparent;  border:none;">
-                                    </div>
-                                    <div>Longitude</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div style="margin-top: 20px"></div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="img/front.png" height="69.6px" width="70px">
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='front' value="."
-                                               style="text-align:right; background-color:transparent; border:none;">
-                                    </div>
-                                    <div>Front</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="img/rear.png" height="69.6px" width="70px">
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='rear' value="."
-                                               style="text-align:right;background-color:transparent; border:none;">
-                                    </div>
-                                    <div>Rear</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-yellow">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="img/right.png" height="70px" width="70px">
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='right' value="."
-                                               style="text-align:right; background-color:transparent;  border:none;">
-                                    </div>
-                                    <div>Right</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-red">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="img/left.png" height="70px" width="70px">
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='left' value="."
-                                               style="text-align:right; background-color:transparent;  border:none;">
-                                    </div>
-                                    <div>Left</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div style="margin-top: 20px"></div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-dashboard fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='speed' value="."
-                                               style="text-align:right; background-color:transparent; border:none;">
-                                    </div>
-                                    <div>Speed</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="img/temp.png" height="69.6px" width="70px">
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='temp' value="."
-                                               style="text-align:right;background-color:transparent; border:none;">
-                                    </div>
-                                    <div>Temperature</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-yellow">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="img/humi.png" height="69.6px" width="70px">
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='humi' value="."
-                                               style="text-align:right; background-color:transparent;  border:none;">
-                                    </div>
-                                    <div>Humidity</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-md-3" style="font-family:함초롱바탕; font-weight:bold;font-size: 16px; line-height: 34px; height:313px; padding-left: 50px; padding-top:20px; padding-bottom: 15px; border-top: solid 1.5px; border-bottom: solid 1.5px; border-right: solid 1.5px">
+                <br> 차량 소유자 : 이제훈 <br>
+                    주민등록번호 : 19840704 - 1xxxxxx<br>
+                    차종 : 대형 승용<br>
+                    용도 : 자가용<br>
+                    차명 : 테라칸<br>
+                    형식 및 연식 : HP-25H74-A1, 2001<br>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
+
 
 
 <!-- Modal -->

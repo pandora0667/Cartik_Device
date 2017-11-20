@@ -202,7 +202,7 @@
         }
 
         /*.panel-heading{*/
-            /*border: 1px solid;*/
+        /*border: 1px solid;*/
         /*}*/
 
         .display-table {
@@ -768,6 +768,13 @@
                 width: 100%;
             }
         }
+
+        /*map*/
+        .map {
+            width: 600px;
+            height: 600px;
+        }
+
     </style>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -783,17 +790,19 @@
 <div class="container-fluid display-table">
     <div class="row display-table-row">
         <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
-            <div class="logo" style="height: 60px; padding-top:25px; font-size: 20px; color:white; font-weight: bold;">
-                WISOFT
+            <div class="logo">
+                <div class="logo" style="height: 60px; padding-top:25px; font-size: 20px; color:white; font-weight: bold;">
+                    WISOFT
+                </div>
             </div>
             <div class="navi">
                 <ul>
-                    <li class="active"><a href="http://jusk2.asuscomm.com:5000/"><i class="fa fa-home" aria-hidden="true"></i><span
+                    <li><a href="http://jusk2.asuscomm.com:5000/"><i class="fa fa-home" aria-hidden="true"></i><span
                             class="hidden-xs hidden-sm">Dashboard</span></a></li>
                     <li><a href="http://jusk2.asuscomm.com:5000/car"><i class="fa fa-tasks" aria-hidden="true"></i><span
                             class="hidden-xs hidden-sm">Car Status</span></a>
                     </li>
-                    <li><a href="http://jusk2.asuscomm.com:5000/gps"><i class="fa fa-bar-chart" aria-hidden="true"></i><span
+                    <li class="active"><a href="http://jusk2.asuscomm.com:5000/gps"><i class="fa fa-bar-chart" aria-hidden="true"></i><span
                             class="hidden-xs hidden-sm">GPS Info</span></a>
                     </li>
                     <li><a href="http://jusk2.asuscomm.com:5000/status"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Internal Status</span></a>
@@ -859,7 +868,6 @@
                 </header>
             </div>
 
-            <!-- start -->
             <script type="text/javascript">
                 const str = window.location.origin.split(":");
                 const address = str[0] + ":" + str[1] + ":3000";
@@ -868,286 +876,102 @@
                     console.log('Connected, I received : ', data);
                 });
 
-                socket.on('mode', (data) => {
-                    $("#mode").val(data);
-                });
-//mode라는 값은 어떻게 가져오죠?...
-                if(mode){
-                `<script type="text/javascript" src="js/audio.js">`
-                }
-                socket.on('impulse', (data) => {
-                    $("#impulse").val(data);
-                });
-                socket.on('lat', (data) => {
-                    $("#lat").val(data);
-                });
-                socket.on('lon', (data) => {
-                    $("#lon").val(data);
-                });
                 socket.on('speed', (data) => {
                     $("#speed").val(data);
                 });
-                socket.on('front', (data) => {
-                    $("#front").val(data);
-                });
-                socket.on('rear', (data) => {
-                    $("#rear").val(data);
-                });
-                socket.on('right', (data) => {
-                    $("#right").val(data);
-                });
-                socket.on('left', (data) => {
-                    $("#left").val(data);
-                });
-                socket.on('temp', (data) => {
-                    $("#temp").val(data);
-                });
-                socket.on('humi', (data) => {
-                    $("#humi").val(data);
-                });
-
-
             </script>
 
-            <div style="margin-top: 20px"></div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="img/atttack.png" height="69.6px" width="70px">
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='mode' value="."
-                                               style="text-align:right; background-color:transparent; border:none;">
-                                    </div>
-                                    <div>Attack</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="img/impulse.png" height="69.6px" width="70px">
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='impulse' value="."
-                                               style="text-align:right;background-color:transparent; border:none;">
-                                    </div>
-                                    <div>Impulse</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-yellow">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="img/long.png" height="69.6px" width="70px">
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='lat' value="."
-                                               style="text-align:right; background-color:transparent;  border:none;">
-                                    </div>
-                                    <div>Latitude</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-red">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="img/long.png" height="69.6px" width="70px">
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='lon' value="."
-                                               style="text-align:right; background-color:transparent;  border:none;">
-                                    </div>
-                                    <div>Longitude</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div style="margin-top: 20px"></div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="img/front.png" height="69.6px" width="70px">
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='front' value="."
-                                               style="text-align:right; background-color:transparent; border:none;">
-                                    </div>
-                                    <div>Front</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="img/rear.png" height="69.6px" width="70px">
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='rear' value="."
-                                               style="text-align:right;background-color:transparent; border:none;">
-                                    </div>
-                                    <div>Rear</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-yellow">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="img/right.png" height="70px" width="70px">
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='right' value="."
-                                               style="text-align:right; background-color:transparent;  border:none;">
-                                    </div>
-                                    <div>Right</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-red">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="img/left.png" height="70px" width="70px">
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='left' value="."
-                                               style="text-align:right; background-color:transparent;  border:none;">
-                                    </div>
-                                    <div>Left</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="container"
+                 style="height: 60px; padding-top: 15px; font-size:25px;font-weight: bold; text-align: center; font-style: oblique">
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;Speed&nbsp;
+                <input style="width:25px;font-style: normal;font-size: 20px; font-weight: normal;border: none; background-color: #f6f7fa;"
+                       type="text" id="speed" value="10">
+                km/h
             </div>
-
-            <div style="margin-top: 20px"></div>
             <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-dashboard fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='speed' value="."
-                                               style="text-align:right; background-color:transparent; border:none;">
-                                    </div>
-                                    <div>Speed</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="img/temp.png" height="69.6px" width="70px">
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='temp' value="."
-                                               style="text-align:right;background-color:transparent; border:none;">
-                                    </div>
-                                    <div>Temperature</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-yellow">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="img/humi.png" height="69.6px" width="70px">
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <input type="text" class="form-control input-lg2" id='humi' value="."
-                                               style="text-align:right; background-color:transparent;  border:none;">
-                                    </div>
-                                    <div>Humidity</div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-5">
+                    <script type="text/javascript"
+                            src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=OJkAR9OhJRmx89n3TfUj&submodules=geocoder"></script>
+                    <div id="map3" style=" width: 500px; height: 330px">
+                        <script type="text/javascript">
+                            //        const str = window.location.origin.split(":");
+                            //        const address = str[0] + ":" + str[1] + ":3000";
+                            //        const socket = io.connect(address);
+                            //
+                            //        socket.on('connected', (data) => {
+                            //            console.log('Connected, I received : ', data);
+                            //        });
+
+                            let HOME_PATH = window.HOME_PATH || '.';
+
+                            let marker;
+                            let hanbatUniversity = new naver.maps.LatLng(36.3507, 127.3006),
+                                map = new naver.maps.Map('map3', {
+                                    center: hanbatUniversity,
+                                    zoom: 12
+                                });
+
+                            marker = new naver.maps.Marker({
+                                position: new naver.maps.LatLng(36.3507, 127.3006),
+                                map: map
+                            });
+
+
+                            let contentString = [
+                                '<div style="width: 150px; height: 10px; padding:0 10px">',
+                                '<h4 style="text-align: center">GPS Info</h4>',
+                                '<p style="font-size: x-small">대전광역시 유성구 동서대로 125 S5동</p>',
+                                '<p style="font-size: x-small">차량번호: 13어1792 </p>',
+                                '</div>'
+                            ].join('');
+
+                            let infowindow = new naver.maps.InfoWindow({
+                                backgroundColor: "#eee",
+                                borderColor: "black",
+                                borderWidth: 1,
+                                anchorSize: new naver.maps.Size(20, 0),
+                                anchorSkew: true,
+                                anchorColor: "#eee",
+                                pixelOffset: new naver.maps.Point(0, -30),
+                                content: contentString
+                            });
+
+                            infowindow.open(map, marker);
+
+                        </script>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-</div>
 
+    <!-- Modal -->
+    <div id="add_project" class="modal fade" role="dialog">
+        <div class="modal-dialog">
 
-<!-- Modal -->
-<div id="add_project" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header login-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add Project</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="text" placeholder="Project Title" name="name">
+                    <input type="text" placeholder="Post of Post" name="mail">
+                    <input type="text" placeholder="Author" name="passsword">
+                    <textarea placeholder="Desicrption"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="cancel" data-dismiss="modal">Close</button>
+                    <button type="button" class="add-project" data-dismiss="modal">Save</button>
+                </div>
+            </div>
 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header login-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Add Project</h4>
-            </div>
-            <div class="modal-body">
-                <input type="text" placeholder="Project Title" name="name">
-                <input type="text" placeholder="Post of Post" name="mail">
-                <input type="text" placeholder="Author" name="passsword">
-                <textarea placeholder="Desicrption"></textarea>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="cancel" data-dismiss="modal">Close</button>
-                <button type="button" class="add-project" data-dismiss="modal">Save</button>
-            </div>
         </div>
-
     </div>
-</div>
 
 </body>
 <script type="text/javascript">
@@ -1160,4 +984,4 @@
 
 </script>
 </body>
-</html>
+</ht
