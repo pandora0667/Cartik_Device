@@ -14,18 +14,18 @@ let lon = 127.300603;
 let speed = 10;
 
 exports.getGPS = () => {
-    const serialGPS = new serialPort(port1, function (err) {
+    const serialGPS = new serialPort(port1, (err) => {
         if (err) {
             return console.log('Error : ', err.message);
         }
     });
 
-    serialGPS.on('open', function () {
+    serialGPS.on('open', () =>  {
         console.log('GPS serial open');
         serialGPS.flush();
     });
 
-    serialGPS.on('data', function (data) {
+    serialGPS.on('data', (data) => {
         try {
             const string = '' + data;
             gps.updatePartial(string);
@@ -34,7 +34,7 @@ exports.getGPS = () => {
         }
     });
 
-    gps.on('data', function (data) {
+    gps.on('data', (data) => {
         lat = gps.state.lat.toString().substring(0, 7);
         lon = gps.state.lon.toString().substring(0, 9);
         speed = gps.state.speed.toString().substring(0, 3);

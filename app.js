@@ -14,6 +14,6 @@ app.use('/static', express.static(__dirname + '/views'));
 
 service.web(express, app);
 
-app.listen(5000, function () {
+app.listen(5000, () => {
     console.log('Web server running at port 5000');
 });
