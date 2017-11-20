@@ -6,10 +6,9 @@ exports.web = (express, app) => {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: false}));
 
-    app.route('/')
-        .get(function (req, res) {
-            res.redirect('/static/testMain.html');
-        });
+    app.get('/', (req, res) => {
+        res.redirect('/static/testMain.html');
+    });
 
     app.get('/car', (req, res) => {
         res.sendFile((__dirname + '/static/testCarStatus.html'));
