@@ -788,7 +788,7 @@
                 <ul>
                     <li><a href="./testMain.html/"><i class="fa fa-home" aria-hidden="true"></i><span
                             class="hidden-xs hidden-sm">Dashboard</span></a></li>
-                    <li class="active"><a href="./testCarStatus.html\"><i class="fa fa-tasks" aria-hidden="true"></i><span
+                    <li class="active"><a href="./testCarStatus.html"><i class="fa fa-tasks" aria-hidden="true"></i><span
                             class="hidden-xs hidden-sm">Car Status</span></a>
                     </li>
                     <li><a href="./map.html"><i class="fa fa-bar-chart" aria-hidden="true"></i><span
@@ -899,17 +899,41 @@
                 });
 
                 if(mode){
-                    `<script type="text/javascript" src="./js/audio.js">`
+                    var headID = document.getElementsByTagName("head")[0];  // 해더 사이에 위치 지정
+                    var jsNode = document.createElement('script'); // 엘리멘터리 생성
+                    jsNode.type = 'text/javascript'; // 속성 지정
+                    jsNode.src = './js/audio.js'; // 속성지정
+                    headID.appendChild(jsNode); // 해더사이에 추가
                 } else if(impulse > 500) {
-                    `<script type="text/javascript" src="./js/impulse.js">`
+                    var headID = document.getElementsByTagName("head")[0];  // 해더 사이에 위치 지정
+                    var jsNode = document.createElement('script'); // 엘리멘터리 생성
+                    jsNode.type = 'text/javascript'; // 속성 지정
+                    jsNode.src = './js/impulse.js'; // 속성지정
+                    headID.appendChild(jsNode);
                 } else if(!front) {
-                    `<script type="text/javascript" src="./js/front.js">`
+                    var headID = document.getElementsByTagName("head")[0];  // 해더 사이에 위치 지정
+                    var jsNode = document.createElement('script'); // 엘리멘터리 생성
+                    jsNode.type = 'text/javascript'; // 속성 지정
+                    jsNode.src = './js/front.js'; // 속성지정
+                    headID.appendChild(jsNode); // 해더사이에 추가
                 } else if(!rear) {
-                    `<script type="text/javascript" src="./js/rear.js">`
+                    var headID = document.getElementsByTagName("head")[0];  // 해더 사이에 위치 지정
+                    var jsNode = document.createElement('script'); // 엘리멘터리 생성
+                    jsNode.type = 'text/javascript'; // 속성 지정
+                    jsNode.src = './js/rear.js'; // 속성지정
+                    headID.appendChild(jsNode); // 해더사이에 추가
                 } else if(!right) {
-                    `<script type="text/javascript" src="./js/right.js">`
+                    var headID = document.getElementsByTagName("head")[0];  // 해더 사이에 위치 지정
+                    var jsNode = document.createElement('script'); // 엘리멘터리 생성
+                    jsNode.type = 'text/javascript'; // 속성 지정
+                    jsNode.src = './js/right.js'; // 속성지정
+                    headID.appendChild(jsNode); // 해더사이에 추가
                 } else if(!left) {
-                    `<script type="text/javascript" src="./js/left.js">`
+                    var headID = document.getElementsByTagName("head")[0];  // 해더 사이에 위치 지정
+                    var jsNode = document.createElement('script'); // 엘리멘터리 생성
+                    jsNode.type = 'text/javascript'; // 속성 지정
+                    jsNode.src = './js/left.js'; // 속성지정
+                    headID.appendChild(jsNode); // 해더사이에 추가
                 }
 
             </script>
